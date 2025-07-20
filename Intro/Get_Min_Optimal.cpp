@@ -55,7 +55,7 @@ int main()
     minStack.push(-3);
     cout<<minStack.getMin()<<endl; // return -3
     minStack.pop();
-    cout<<minStack.top()<<endl;    // return 0
-    cout<<minStack.getMin();
+    cout<<minStack.top();    // return 0
+    minStack.getMin();
  return 0;
 }
