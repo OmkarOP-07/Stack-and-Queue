@@ -22,6 +22,8 @@ int main()
     name.pop();
     cout<<name.front()<<endl;
     name.pop();
+    int min = INT_MIN;
+    cout<<endl<<min;
  return 0;
  
 }

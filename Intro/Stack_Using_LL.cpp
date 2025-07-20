@@ -13,10 +13,17 @@ class Node {
 };
 
 class Stack {
+    private:
+    stack<pair<int,int>> st;
     public :
         Node* top;
         int size = 0;
         void push(int data){
+            if(st.empty()){
+                st.push({data,data});
+            } else {
+                st.push({data, min(data, st.top().second)});
+            }
             Node* temp = new Node(data);
             temp->next = top;
             top = temp;
@@ -24,6 +31,7 @@ class Stack {
         }
 
         void pop(){
+            st.pop();
             Node* temp = top;
             top = top->next;
             delete temp;
@@ -37,7 +45,9 @@ class Stack {
         int getTop(){
             return top->data;
         }
-
+        int getMin(){
+            return st.top().second;
+        }
 };
 
 int main()
@@ -51,5 +61,6 @@ int main()
     st.pop();
     cout<<"TOP after popping out an element :"<<st.getTop()<<endl;
     cout<<"Size of the stack :"<<st.getSize()<<endl;
+    cout<<"Min Val :"<<st.getMin();
  return 0;
 }
