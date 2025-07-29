@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "e:/Omkar/Codes/C++ Programs/Stack and Queue/Medium_Level",
+      "program": "e:/Omkar/Codes/C++ Programs/Stack and Queue/Medium_Level/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
