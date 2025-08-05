@@ -6,7 +6,8 @@ string Prefix_to_Postfix(string s){
     int n = s.size()-1;
     stack<string> st;
     while(n >= 0){
-        if(s[n] >= 'A' && s[n] <= 'Z'){
+        if(s[n] >= 'A' && s[n] <= 'Z'
+        || s[n] >= 'a' && s[n] <= 'z'){
             st.push(string(1,s[n]));
         }
         else {
