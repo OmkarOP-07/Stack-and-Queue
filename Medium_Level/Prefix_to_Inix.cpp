@@ -1,7 +1,7 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-string pretfix_to_infix(string s){
+string prefix_to_infix(string s){
     stack<string> st;
     int n = s.size()-1;
     while(n >= 0){
@@ -25,6 +25,6 @@ string pretfix_to_infix(string s){
 int main()
 {
     string s = "*+AB-CD";
-    cout<<pretfix_to_infix(s);
+    cout<<prefix_to_infix(s);
  return 0;
 }
