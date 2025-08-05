@@ -84,6 +84,5 @@ int main()
 {
     Solution sh;
     cout << sh.Infix_To_Prefix("a+b*(c^d-e)^(f+g*h)-i");
-    
     return 0;
 }
