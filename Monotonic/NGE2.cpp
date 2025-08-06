@@ -10,20 +10,17 @@ public:
     {
         int n = arr.size();
         stack<int> st;
-        vector<int> tmparr = arr;
-        for (int i = 0; i < n; i++)
-            tmparr.push_back(arr[i]);
-
+       
         vector<int> ans(arr.size(), -1);
         for (int i = 2 * n - 1; i >= 0; i--)
         {
-            while (!st.empty() && st.top() <= tmparr[i])
+            while (!st.empty() && st.top() <= arr[i%n])
                 st.pop();
 
             if (!st.empty())
                 ans[i%n] = st.top();
 
-            st.push(tmparr[i]);
+            st.push(arr[i%n]);
         }
         return ans;
     }
