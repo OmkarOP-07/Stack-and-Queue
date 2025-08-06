@@ -11,10 +11,7 @@ vector<int> solution(vector<int> &arr)
         while (!st.empty() && st.top() <= arr[i])
             st.pop();
 
-        if (st.empty())
-            ans[i] = -1;
-        else 
-            ans[i] = st.top();
+        ans[i] = st.empty() ? -1:st.top();
 
         st.push(arr[i]);
     }
