@@ -3,25 +3,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> NGE(vector<int> &arr)
+vector<int> NGE(vector<int> &arr) //{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
 {
+    vector<int> ans(arr.size(), -1);
+    stack<int> st;
+    for (int i = arr.size() - 1; i >= 0; i--)
     {
-        int n = arr.size();
-        stack<int> st;
-       
-        vector<int> ans(arr.size(), -1);
-        for (int i = 2 * n - 1; i >= 0; i--)
-        {
-            while (!st.empty() && st.top() <= arr[i%n])
-                st.pop();
+        while (!st.empty() && st.top() <= arr[i])
+            st.pop();
 
-            if (!st.empty())
-                ans[i%n] = st.top();
+        ans[i] = st.empty() ? 0 : st.top();
 
-            st.push(arr[i%n]);
-        }
-        return ans;
+        if (st.empty() || arr[i] > st.top())
+            st.push(arr[i]);
     }
+    return ans;
 }
 vector<int> PGE(vector<int> &arr)
 {
@@ -33,18 +29,12 @@ vector<int> PGE(vector<int> &arr)
             st.pop();
         ans[i] = st.empty() ? 0 : st.top();
         
-        if(!st.empty()){
-            if(arr[i] >= st.top()){
-                st.push(arr[i]);
-            }
-        }
-        else {
+        if (st.empty() || arr[i] >= st.top())
             st.push(arr[i]);
-        }
+
     }
     return ans;
 }
-
 
 int main()
 {
@@ -54,17 +44,12 @@ int main()
     int count = 0;
     for (int i = 0; i < arr.size(); i++)
     {
-        if (NGE_Arr[i] != 0 && PGE_Arr[i] != 0)
-        {
-            if( NGE_Arr[i] > arr[i] && PGE_Arr[i] > arr[i] )
-                count = count + abs(NGE_Arr[i] - PGE_Arr[i]);
-                
-        }
-        // cout<<count<<endl;
+        if (NGE_Arr[i] > arr[i] && PGE_Arr[i] > arr[i])
+            count += (min(NGE_Arr[i], PGE_Arr[i]) - arr[i]); 
     }
-    cout<<count;
+    cout << count;
     return 0;
 }
 
-//1 2 2 3 3 1 3 -1 -1 2 -1 -1
-//1 2 2 3 3 1 3  0  0 2  0  0 
+// 1 2 2 3 3 1 3 -1 -1 2 -1 -1
+// 1 2 2 3 3 1 3  0  0 2  0  0
