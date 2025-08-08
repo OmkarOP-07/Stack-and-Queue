@@ -27,7 +27,7 @@ public:
 };
 int main()
 {
-    vector<int> arr = {1,2,1};
+    vector<int> arr = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
     vector<int> ans;
     Solution sh;
     ans = sh.nextGreaterElements(arr);
