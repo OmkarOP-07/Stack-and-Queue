@@ -1,4 +1,48 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int Solution(vector<int> &arr){
+    int l = 0;
+    int h = arr.size()-1;
+    int Lmax = 0, Rmax = 0;
+    int ans = 0;
+    while (l < h) {
+        if (arr[l] <= arr[h]) {
+            if (Lmax > arr[l] )
+                ans += Lmax - arr[l];
+            else
+                Lmax = arr[l];
+            l++;
+        } else {
+            if (arr[h] < Rmax)
+                ans += Rmax - arr[h];
+            else
+                Rmax = arr[h];
+            h--;
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    vector<int> arr = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+    cout<<Solution(arr);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
 // Brute Force Approach
+/*
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -53,3 +97,5 @@ int main()
 
 // 1 2 2 3 3 1 3 -1 -1 2 -1 -1
 // 1 2 2 3 3 1 3  0  0 2  0  0
+
+*/
