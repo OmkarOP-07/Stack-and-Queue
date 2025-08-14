@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> solution(vector<int> &arr)
+vector<int> NSE(vector<int> &arr)
 {
     vector<int> ans(arr.size(), -1);
     stack<int> st;
@@ -22,7 +22,7 @@ int main()
 {
     vector<int> arr = {2, 1, 6, 3, 2};
     vector<int> ans;
-    ans = solution(arr);
+    ans = NSE(arr);
     for (auto it : ans)
     {
         cout << it << " ";
