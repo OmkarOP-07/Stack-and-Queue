@@ -3,28 +3,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-vector<int> PGEE(vector<int> &arr)
+vector<vector<int>> funct(vector<vector<int>> &arr)
 {
-    stack<int> st;
-    vector<int> ans(arr.size(), -1);
-    for (int i = 0; i <= arr.size() - 1; i++)
+    int rows = static_cast<int>(arr.size());
+    int cols = static_cast<int>(arr[0].size());
+
+    for (int i = 1; i < rows; i++)
     {
-        while (!st.empty() && arr[st.top()] < arr[i])
+        for (int j = 0; j < cols; j++)
         {
-            st.pop();
+            if (arr[i][j] != 0)
+            {
+                arr[i][j] += arr[i - 1][j];
+            }
         }
-        ans[i] = st.empty() ? -1 : st.top();
-        st.push(i);
     }
-    return ans;
+    return arr;
 }
+
 int main()
 {
-    vector<int> arr = {3, 2, 1, 5, 8, 2, 9};
-    vector<int> PGE_Arr = PGEE(arr);
-    for (auto it : PGE_Arr)
+    vector<vector<int>> arr = {
+        {1, 0, 1, 0, 0},
+        {1, 0, 1, 1, 1},
+        {1, 1, 1, 1, 1},
+        {1, 0, 0, 1, 0}};
+    arr = funct(arr);
+    for (int i = 0; i < arr.size(); i++)
     {
-        cout << it << " ";
+        for (int j = 0; j < arr[0].size(); j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
     }
 }
