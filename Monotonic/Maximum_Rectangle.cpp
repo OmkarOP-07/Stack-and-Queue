@@ -31,21 +31,20 @@ int maximalRectangle(vector<vector<char>> &arr) {
     if (rows == 0) return 0;
     int cols = arr[0].size();
     
-    vector<vector<int>> ans(rows, vector<int>(cols, 0));
+    vector<vector<int>> newArr(rows, vector<int>(cols, 0));
     
-    // Build histogram heights
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            if (arr[i][j] == '0')
-                ans[i][j] = 0;
-            else
-                ans[i][j] = (i == 0 ? 1 : ans[i-1][j] + 1);
+    for (int j = 0; j < cols; j++) {
+        int sum = 0;
+        for (int i = 0; i < rows; i++) {
+            sum += arr[i][j] - '0';
+            if(arr[i][j]-'0' == 0) sum = 0;
+            newArr[i][j] = sum;
         }
     }
 
     int maxArea = 0;
     for (int i = 0; i < rows; i++) {
-        maxArea = max(maxArea, largestRectangleArea(ans[i]));
+        maxArea = max(maxArea, largestRectangleArea(newArr[i]));
     }
     return maxArea;
 }
